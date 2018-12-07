@@ -60,6 +60,9 @@
     <ClInclude Include="..\Classes\GSlider.h" />
     <ClInclude Include="..\Classes\GTextField.h" />
     <ClInclude Include="..\Classes\GTextInput.h" />
+    <ClInclude Include="..\Classes\lua\LuaBasicConversions_fairygui.h" />
+    <ClInclude Include="..\Classes\lua\lua_fairygui_auto.hpp" />
+    <ClInclude Include="..\Classes\lua\lua_fairygui_manual.hpp" />
     <ClInclude Include="..\Classes\Margin.h" />
     <ClInclude Include="..\Classes\PackageItem.h" />
     <ClInclude Include="..\Classes\PopupMenu.h" />
@@ -132,6 +135,9 @@
     <ClCompile Include="..\Classes\GSlider.cpp" />
     <ClCompile Include="..\Classes\GTextField.cpp" />
     <ClCompile Include="..\Classes\GTextInput.cpp" />
+    <ClCompile Include="..\Classes\lua\LuaBasicConversions_fairygui.cpp" />
+    <ClCompile Include="..\Classes\lua\lua_fairygui_auto.cpp" />
+    <ClCompile Include="..\Classes\lua\lua_fairygui_manual.cpp" />
     <ClCompile Include="..\Classes\Margin.cpp" />
     <ClCompile Include="..\Classes\PackageItem.cpp" />
     <ClCompile Include="..\Classes\PopupMenu.cpp" />
@@ -161,6 +167,7 @@
     <ProjectGuid>{187d3e60-961a-41ee-bc18-c510a431d22e}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>libfairygui</RootNamespace>
+    <WindowsTargetPlatformVersion>7.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -170,6 +177,7 @@
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '12.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v120_xp</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0'">v140</PlatformToolset>
     <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0' and exists('$(MSBuildProgramFiles32)\Microsoft SDKs\Windows\v7.1A')">v140_xp</PlatformToolset>
+    <PlatformToolset>v141_xp</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>

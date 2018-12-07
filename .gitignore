@@ -3,6 +3,9 @@
 *.lo
 *.o
 *.obj
+[Bb]in
+[Dd]ebug/
+[Dd]ebug.win32/
 
 # Precompiled Headers
 *.gch
