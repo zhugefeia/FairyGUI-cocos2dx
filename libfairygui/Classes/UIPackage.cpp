@@ -145,6 +145,20 @@ GObject* UIPackage::createObject(const string& pkgName, const string& resName)
     }
 }
 
+Sprite* UIPackage::createSprite(const std::string& pkgName, const std::string& resName)
+{
+	UIPackage* pkg = UIPackage::getByName(pkgName);
+	if (pkg)
+	{
+		return pkg->createSprite(resName);
+	}
+	else
+	{
+		CCLOGERROR("FairyGUI: package not found - %s", pkgName.c_str());
+		return nullptr;
+	}
+}
+
 GObject* UIPackage::createObjectFromURL(const string& url)
 {
     PackageItem* pi = UIPackage::getItemByURL(url);
@@ -295,6 +309,40 @@ GObject * UIPackage::createObject(PackageItem * item)
     g->constructFromResource();
     _constructing--;
     return g;
+}
+
+Sprite* UIPackage::createSprite(const std::string& resName)
+{
+	PackageItem* pi = getItemByName(resName);
+	CCASSERT(pi, StringUtils::format("FairyGUI: resource not found - %s in  %s",
+		resName.c_str(), _name.c_str()).c_str());
+
+	return createSprite(pi);
+}
+
+Sprite* UIPackage::createSprite(PackageItem* item)
+{
+	GObject* g = UIObjectFactory::newObject(item);
+	if (g == nullptr)
+		return nullptr;
+
+	_constructing++;
+	g->_packageItem = item;
+	g->constructFromResource();
+	_constructing--;
+
+	GImage* img = g->as<GImage>();
+	if (img)
+	{
+		Sprite* sprite = static_cast<Sprite*>(g->_displayObject);
+		g->_displayObject = nullptr;
+		sprite->setOnEnterCallback(nullptr);
+		sprite->setOnExitCallback(nullptr);
+		sprite->release();
+		return sprite;
+	}
+
+	return nullptr;
 }
 
 bool UIPackage::loadPackage(ByteBuffer* buffer, const string& assetPath)

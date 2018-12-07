@@ -38,6 +38,8 @@ public:
     PackageItem* getItemByName(const std::string& itemName);
     void* getItemAsset(PackageItem* item);
 
+	static cocos2d::Sprite* createSprite(const std::string& pkgName, const std::string& resName);
+
     static int _constructing;
     static const std::string URL_PREFIX;
 
@@ -52,6 +54,8 @@ private:
 
     GObject* createObject(const std::string& resName);
     GObject* createObject(PackageItem* item);
+	cocos2d::Sprite* createSprite(const std::string& resName);
+	cocos2d::Sprite* createSprite(PackageItem* item);
 
 private:
     std::string _id;
