@@ -77,7 +77,10 @@ Classes/tween/GTween.cpp \
 Classes/tween/GTweener.cpp \
 Classes/tween/TweenManager.cpp \
 Classes/tween/TweenPropType.cpp \
-Classes/tween/TweenValue.cpp
+Classes/tween/TweenValue.cpp \
+Classes/lua/lua_fairygui_auto.cpp \
+Classes/lua/lua_fairygui_manual.cpp \
+Classes/lua/LuaBasicConversions_fairygui.cpp
 
 LOCAL_CPP_FEATURES := rtti exceptions
 
@@ -85,6 +88,14 @@ LOCAL_STATIC_LIBRARIES := cocos2dx_static
 
 LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/Classes
 
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/Classes
+LOCAL_C_INCLUDES := \
+$(LOCAL_PATH)/Classes \
+$(LOCAL_PATH)/../cocos2d-x/cocos/audio/include \
+$(LOCAL_PATH)/../cocos2d-x/external/chipmunk/include/chipmunk \
+$(LOCAL_PATH)/../cocos2d-x/extensions \
+$(LOCAL_PATH)/../cocos2d-x/external/lua \
+$(LOCAL_PATH)/../cocos2d-x/external/lua/tolua \
+$(LOCAL_PATH)/../cocos2d-x/external/lua/luajit/include
+
                                  
 include $(BUILD_STATIC_LIBRARY)
